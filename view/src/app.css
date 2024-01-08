@@ -1,0 +1,49 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+.login-element, .register-element {
+    border-radius: 1em;
+    margin: 0.5em;
+   
+}
+
+.Form {
+
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: stretch;
+    width: 40%;
+   margin: 5%;
+   
+ 
+}
+
+.LoginPage, .RegisterPage {
+    display: flex;
+   flex-direction: column;
+  
+   justify-content: center;
+   align-items: center;
+   margin: 15%;
+}
+
+.User-Selector{
+
+    display: flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
+   justify-content: center;
+   align-items: center;
+   
+}
+
+.selector-input {
+    margin: 1%;
+    flex-wrap: nowrap;
+    display: flex;
+}
