@@ -3,6 +3,8 @@ import './app.css'
 import axios from 'axios';
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import VenuePage from "./pages/VenuePage";
+import VenueListPage from "./pages/VenueListPage";
 
 
 axios.defaults.baseURL = "http://127.0.0.1:4000";
@@ -17,6 +19,8 @@ function App() {
       
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/venue" element={<VenuePage />} />
+      <Route path="/venue/list" element={<VenueListPage />} />
 
   
     </Routes>

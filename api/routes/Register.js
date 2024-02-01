@@ -9,7 +9,7 @@ router.post('/Spectator', async(req, res)=>{
     const hash = await bcrypt.hash(Password, 9);
     const result = await insert_Spectator(Name, Surname, Email, hash);
     const token = await jwt.sign({name:Name, surname: Surname, email: Email}, process.env.ACCESS_TOKEN_SECRET);
-    res.json({token: token})
+    res.json({status: "success", token: token})
 });
 
 router.post('/Landlord', async(req, res)=>{
@@ -18,7 +18,7 @@ router.post('/Landlord', async(req, res)=>{
     const hash = await bcrypt.hash(Password, 9);
     const result = await insert_Landlord(Name, Surname, Address, DateofBirth, Email, hash);
     const token = await jwt.sign({name:Name, surname: Surname, email: Email}, process.env.ACCESS_TOKEN_SECRET);
-    res.json({token: token})
+    res.json({status: "success", token: token})
 });
 
 router.post('/Performer', async(req, res)=>{
@@ -26,7 +26,7 @@ router.post('/Performer', async(req, res)=>{
     const hash = await bcrypt.hash(Password, 9);
     const result = await insert_Performer(Name, Surname, Artist, Category, Email, hash);
     const token = await jwt.sign({ email: Email}, process.env.ACCESS_TOKEN_SECRET);
-    res.json({token: token})
+    res.json({status: "success", token: token})
 });
 
 

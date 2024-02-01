@@ -4,7 +4,7 @@
 }
 
 
-.login-element, .register-element {
+.login-element, .register-element, .venue-element {
     border-radius: 1em;
     margin: 0.5em;
    
@@ -23,7 +23,7 @@
  
 }
 
-.LoginPage, .RegisterPage {
+.LoginPage, .RegisterPage, .VenuePage, .VenueListPage {
     display: flex;
    flex-direction: column;
   
@@ -46,4 +46,16 @@
     margin: 1%;
     flex-wrap: nowrap;
     display: flex;
+}
+
+.venue-list {
+
+    width: 700px;
+    border-radius: 1em;
+    margin: 0.5em;
+    padding: 50px;
+    
+    border-style: solid;
+
+
 }

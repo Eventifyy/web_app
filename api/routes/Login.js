@@ -2,10 +2,13 @@ import express from 'express'
 import {insert_Spectator, get_Spectator, insert_Landlord, get_Landlord} from '../../model/database.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-const router = express.Router()
-import cors from 'cors';
 
-router.use(cors());
+const router = express.Router()
+
+import cookieParser from 'cookie-parser'
+router.use(cookieParser());
+
+
 
 
 router.post('/Spectator', async(req, res)=>{
@@ -21,8 +24,8 @@ router.post('/Spectator', async(req, res)=>{
     const result = await bcrypt.compare(Password, data[0].Password)
     if (result){
         const token = await jwt.sign({id: data[0].ID, email: Email}, process.env.ACCESS_TOKEN_SECRET);
-  
-        res.json({token: token})
+        res.send({status: 'success', token: token});
+        
     }
     else{
         res.send("Credentials are incorrect");
@@ -30,8 +33,8 @@ router.post('/Spectator', async(req, res)=>{
     
 });
 
-router.post('/Landlord', async(req, res)=>{
 
+router.post('/Landlord', async(req, res)=>{
 
     const {Email, Password} = req.body
     
@@ -47,14 +50,17 @@ router.post('/Landlord', async(req, res)=>{
     if (result){
  
         const token = await jwt.sign({id: data[0].ID, email: Email}, process.env.ACCESS_TOKEN_SECRET);
-   
-        res.json({token: token})
+        //res.cookie('token', token, { httpOnly: true, sameSite:'none', secure: false}).json();
+        res.send({status: "success", token: token})
+        
     }
     else{
         res.send("Credentials are incorrect");
     }
 
 });
+
+
 
 router.post('/Performer', async(req, res)=>{
     const {Email, Password} = req.body
@@ -69,7 +75,8 @@ router.post('/Performer', async(req, res)=>{
     if (result){
         const token = await jwt.sign({id: data[0].ID, email: Email}, process.env.ACCESS_TOKEN_SECRET);
       
-        res.json({token: token})
+        //res.cookie('token', token, { httpOnly: true, sameSite:'none', secure: false}).json();
+        res.send({status: "success", token: token})
     }
     else{
         res.send("Credentials are incorrect");

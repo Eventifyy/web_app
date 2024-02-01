@@ -62,6 +62,19 @@ async function insert_Venue(Name, Capacity, Address, Category, Landlord_id){
     return result
 }
 
+async function get_Venue(pageNumber, pageSize) {
+  const offset = (pageNumber - 1) * pageSize;
+
+  const result = await pool.query(
+    `SELECT Name, Capacity, Address FROM Venue ORDER BY ID LIMIT ? OFFSET ?`,
+    [pageSize, offset]
+  );
+
+  return result[0];
+}
+
+
+
 async function get_CategoryID(Category){
     console.log(Category)
     const Category_id = await pool.query(`SELECT ID FROM Category WHERE Name = ?`, [Category]);
@@ -71,4 +84,4 @@ async function get_CategoryID(Category){
 }
 
 
-export {insert_Spectator, get_Spectator, insert_Landlord, get_Landlord, insert_Venue, get_Performer, insert_Performer};
+export {insert_Spectator, get_Spectator, insert_Landlord, get_Landlord, insert_Venue, get_Performer, insert_Performer, get_Venue};
